@@ -58,8 +58,7 @@ module.exports = function (grunt) {
                         'bower_components/handlebars/handlebars.runtime.min.js',
                         'bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js',
                         'bower_components/blueimp-file-upload/js/jquery.iframe-transport.js',
-                        'bower_components/blueimp-file-upload/js/jquery.fileupload.js',
-                        'bower_components/jquery-sortable/source/js/jquery-sortable-min.js'
+                        'bower_components/blueimp-file-upload/js/jquery.fileupload.js'
                     ],
                     template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
