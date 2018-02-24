@@ -9,7 +9,7 @@
 
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['jquery', 'handlebars/runtime', 'medium-editor', 'blueimp-file-upload'], factory);
+        define(['jquery', 'handlebars/runtime', 'medium-editor', 'blueimp-file-upload', 'sortablejs/Sortablejs'], factory);
     } else if (typeof module === 'object' && module.exports) {
         module.exports = function (jQuery) {
             if (typeof window === 'undefined') {
@@ -24,6 +24,7 @@
             Handlebars = require('handlebars/runtime');
             MediumEditor = require('medium-editor');
             require('blueimp-file-upload');
+            require('sortablejs/Sortablejs');
 
             factory(jQuery, Handlebars, MediumEditor);
             return jQuery;
@@ -1626,21 +1627,35 @@ this["MediumInsert"]["Templates"]["src/js/templates/images-toolbar.hbs"] = Handl
                 }
             },
             sorting: function () {
-                console.error("error")
-                // var that = this;
+              var el = document.querySelector(".medium-insert-images")
+              var that = this
+              // var that = this;
 
-                // $('.medium-insert-images').sortable({
-                //     group: 'medium-insert-images',
-                //     containerSelector: '.medium-insert-images',
-                //     itemSelector: 'figure',
-                //     placeholder: '<figure class="placeholder">',
-                //     handle: 'img',
-                //     nested: false,
-                //     vertical: false,
-                //     afterMove: function () {
-                //         that.core.triggerInput();
-                //     }
-                // });
+              // $('.medium-insert-images').sortable({
+              //     group: 'medium-insert-images',
+              //     containerSelector: '.medium-insert-images',
+              //     itemSelector: 'figure',
+              //     placeholder: '<figure class="placeholder">',
+              //     handle: 'img',
+              //     nested: false,
+              //     vertical: false,
+              //     afterMove: function () {
+              //         that.core.triggerInput();
+              //     }
+              // });
+              var sortable = new Sortable(el, {
+                group: "medium-insert-images",  // or { name: "...", pull: [true, false, clone], put: [true, false, array] }
+                sort: true,  // sorting inside list
+                handle: "img",  // Drag handle selector within list items
+                draggable: ".medium-insert-images",  // Specifies which items inside the element should be draggable
+                ghostClass: "placeholder",  // Class name for the drop placeholder
+                chosenClass: "sortable-chosen",  // Class name for the chosen item
+                dragClass: "sortable-drag",  // Class name for the dragging item
+                onEnd: function () {
+                  that.core.triggerInput();
+                }
+              });
+
             },
             messages: {
                 acceptFileTypesError: 'This file is not in a supported format: ',
