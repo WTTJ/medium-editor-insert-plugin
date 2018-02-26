@@ -1627,34 +1627,21 @@ this["MediumInsert"]["Templates"]["src/js/templates/images-toolbar.hbs"] = Handl
                 }
             },
             sorting: function () {
-              var el = document.querySelector(".medium-insert-images")
-              var that = this
-              // var that = this;
+              // var els = $(".medium-insert-images")
+              // var that = this
 
-              // $('.medium-insert-images').sortable({
-              //     group: 'medium-insert-images',
-              //     containerSelector: '.medium-insert-images',
-              //     itemSelector: 'figure',
-              //     placeholder: '<figure class="placeholder">',
-              //     handle: 'img',
-              //     nested: false,
-              //     vertical: false,
-              //     afterMove: function () {
-              //         that.core.triggerInput();
-              //     }
+              // var sortable = new Sortable(els, {
+              //   group: "medium-insert-images",  // or { name: "...", pull: [true, false, clone], put: [true, false, array] }
+              //   sort: true,  // sorting inside list
+              //   handle: "img",  // Drag handle selector within list items
+              //   draggable: ".medium-insert-images",  // Specifies which items inside the element should be draggable
+              //   ghostClass: "placeholder",  // Class name for the drop placeholder
+              //   chosenClass: "sortable-chosen",  // Class name for the chosen item
+              //   dragClass: "sortable-drag",  // Class name for the dragging item
+              //   onEnd: function () {
+              //     that.core.triggerInput();
+              //   }
               // });
-              var sortable = new Sortable(el, {
-                group: "medium-insert-images",  // or { name: "...", pull: [true, false, clone], put: [true, false, array] }
-                sort: true,  // sorting inside list
-                handle: "img",  // Drag handle selector within list items
-                draggable: ".medium-insert-images",  // Specifies which items inside the element should be draggable
-                ghostClass: "placeholder",  // Class name for the drop placeholder
-                chosenClass: "sortable-chosen",  // Class name for the chosen item
-                dragClass: "sortable-drag",  // Class name for the dragging item
-                onEnd: function () {
-                  that.core.triggerInput();
-                }
-              });
 
             },
             messages: {
